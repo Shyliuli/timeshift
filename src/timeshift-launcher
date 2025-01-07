@@ -14,7 +14,7 @@ else
 		# script is running in non-interactive mode
 		if [ "$XDG_SESSION_TYPE" = "wayland" ] ; then
 			xhost +SI:localuser:root
-			pkexec ${app_command}
+			pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY ${app_command}
 			xhost -SI:localuser:root
 			xhost
 		elif command -v pkexec >/dev/null 2>&1; then
